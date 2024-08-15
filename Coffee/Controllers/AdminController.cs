@@ -9,12 +9,12 @@ namespace Coffee.Controllers
     {
         public ActionResult Index()
         {
-            return View("~/Pages/Admin/Index.cshtml");
+            return View();
         }
 
         public ActionResult Users()
         {
-            return View("~/Pages/Admin/Users.cshtml");
+            return View();
         }
     }
 }
