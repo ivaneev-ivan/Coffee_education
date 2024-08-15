@@ -1,0 +1,20 @@
+﻿@{
+	ViewData["Title"] = "News page";
+}
+
+<div class="text-center">
+	<h1 class="display-4">News</h1>
+	<ul>
+		@foreach (var item in Model)
+		{
+			<li>
+				<span>@item.Title</span>
+				<span>@item.Description</span>
+				<span>@item.Date.ToString("yyyy.MM.dd HH:mm")</span>
+				<span>@item.AuthorId</span>
+				<span>@item.CreateDate.ToString("yyyy.MM.dd HH:mm")</span>
+				<span>@item.IsActive</span>
+			</li>
+		}
+	</ul>
+</div>
