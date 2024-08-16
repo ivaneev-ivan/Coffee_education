@@ -3,6 +3,7 @@ using Coffee.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Coffee.Controllers
 {
@@ -31,5 +32,24 @@ namespace Coffee.Controllers
             var listNews = await _newsRepository.GetNewNews();
             return View(listNews);
         }
-    }
+
+        [Route("/admin/news/create")]
+        public async Task<ActionResult> CreateNews()
+        {
+            return View();
+        }
+
+		[Route("/admin/news/create")]
+        [HttpPost]
+		public async Task<ActionResult> CreateNewsPost(News news)
+		{
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!string.IsNullOrEmpty(userId)) {
+                news.AuthorId = userId;
+				var result = await _newsRepository.CreateNewsAsync(news);
+			}
+
+			return Redirect("/admin/news/");
+		}
+	}
 }

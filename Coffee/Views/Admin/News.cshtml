@@ -2,8 +2,12 @@
 	ViewData["Title"] = "News page";
 }
 
-<div class="text-center">
+<div>
 	<h1 class="display-4">News</h1>
+
+	<a href="/admin/news/create" class="btn btn-primary">Создать новость</a>
+	<br />
+	<hr />
 	<ul>
 		@foreach (var item in Model)
 		{
