@@ -9,7 +9,7 @@
 
 	<a href="/admin/news/create" class="btn btn-primary">Создать новость</a>
 
-	<table class="table table-centered mt-5">
+	<table class="table table-centered mt-2">
 		<thead>
 			<tr>
 				<th>Title</th>
@@ -30,7 +30,7 @@
 					<td>@item.Description</td>
 					<td>@item.CreateDate</td>
 					<td>@item.Date</td>
-					<td>@item.Author.Email</td>
+					<td>@item.AuthorId</td>
 					@if (item.IsActive)
 					{
 						<td>Да</td>
