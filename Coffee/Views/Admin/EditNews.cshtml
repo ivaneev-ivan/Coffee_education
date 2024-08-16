@@ -1,0 +1,29 @@
+﻿@{
+	ViewData["Title"] = "Edit page";
+}
+@using Coffee.Models.Entities
+@model News
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div>
+	<h1 class="display-4">Create News</h1>
+	<form method="post" action="">
+		<div class="mb-3">
+			<label for="simpleinput" class="form-label">Title</label>
+			<input type="text" asp-for="Title" class="form-control">
+		</div>
+		<div class="mb-3">
+			<label for="simpleinput" class="form-label">Text</label>
+			<input type="text" asp-for="Description" class="form-control">
+		</div>
+		<div class="mb-3">
+			<label for="simpleinput" class="form-label">Publication Date</label>
+			<input type="date" asp-for="Date" class="form-control date" date-toggle="date-picker" data-single-date-picker="true" >
+		</div>
+		<div class="mb-3">
+			<label for="simpleinput" class="form-label">Is active</label>
+			<input type="checkbox" checked="checked" asp-for="IsActive">
+		</div>
+		<input type="submit" id="btnSubmit" class="btn btn-primary" value="Update" />
+	</form>
+</div>
