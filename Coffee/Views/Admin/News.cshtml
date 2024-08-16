@@ -1,24 +1,49 @@
-﻿@{
+﻿@using Coffee.Models.Entities;
+@{
 	ViewData["Title"] = "News page";
 }
+@model List<News>;
 
 <div>
 	<h1 class="display-4">News</h1>
 
 	<a href="/admin/news/create" class="btn btn-primary">Создать новость</a>
-	<br />
-	<hr />
-	<ul>
-		@foreach (var item in Model)
-		{
-			<li>
-				<span>@item.Title</span>
-				<span>@item.Description</span>
-				<span>@item.Date.ToString("yyyy.MM.dd HH:mm")</span>
-				<span>@item.AuthorId</span>
-				<span>@item.CreateDate.ToString("yyyy.MM.dd HH:mm")</span>
-				<span>@item.IsActive</span>
-			</li>
-		}
-	</ul>
+
+	<table class="table table-centered mt-5">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Create Date</th>
+				<th>Publicate Date</th>
+				<th>Author Id</th>
+				<th>Active?</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>@item.Title</td>
+					<td>@item.Description</td>
+					<td>@item.CreateDate</td>
+					<td>@item.Date</td>
+					<td>@item.AuthorId</td>
+					@if (item.IsActive)
+					{
+						<td>Да</td>
+					}
+					else
+					{
+						<td>Нет</td>
+					}
+					<td><a href="">edit</a></td>
+					<td><a href="">delete</a></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
 </div>
