@@ -1,0 +1,40 @@
+﻿@using Coffee.Models.Entities
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+	<li class="dropdown notification-list">
+		<a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+		   aria-expanded="false">
+			<span>
+				<span class="account-user-name">Dominic Keller</span>
+				<span class="account-position">Founder</span>
+			</span>
+		</a>
+		<div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+			<!-- item-->
+			<a href="javascript:void(0);" class="dropdown-item notify-item">
+				<i class="mdi mdi-account-circle me-1"></i>
+				<span>My Account</span>
+			</a>
+
+
+			<!-- item-->
+			<a href="javascript:void(0);" class="dropdown-item notify-item">
+				<i class="mdi mdi-lifebuoy me-1"></i>
+				<span>Support</span>
+			</a>
+
+			<form class="dropdown-item notify-item" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
+				<button type="submit" class="btn">Logout</button>
+			</form>
+		</div>
+	</li>
+}
+else
+{
+	<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+	<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+}
